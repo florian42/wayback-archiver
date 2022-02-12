@@ -1,5 +1,5 @@
 use chrono::{Duration, Utc};
-use clap::{AppSettings, Clap};
+use clap::Parser;
 use indicatif::{ProgressBar, ProgressStyle};
 use std::collections::BTreeMap;
 use std::fs;
@@ -11,9 +11,8 @@ use std::thread;
 mod lib;
 use crate::lib::{archive_url, ArchiveError, ArchivingResult};
 
-#[derive(Clap)]
+#[derive(Parser)]
 #[clap(version = "1.0", author = "Ben Congdon <ben@congdon.dev>")]
-#[clap(setting = AppSettings::ColoredHelp)]
 struct Opts {
     /// If set, archived URLs are saved to the path specified by this flag.
     /// Otherwise, URLs are printed at the end of the command run.
